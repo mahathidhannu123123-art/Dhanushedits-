@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dhanush Edits — Your Videos. Our Creativity.</title>
+<meta name="description" content="Affordable, professional video editing for Instagram Reels, videos, gaming content, and cinematic edits. Delivered on WhatsApp." />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #0a0a12;
+    color: #fff;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    position: relative;
+  }
+  a { text-decoration: none; }
+  button, input, textarea, select { font-family: inherit; }
+  input:focus, textarea:focus { border-color: #7c5cff !important; outline: none; }
+
+  .glow-bg { position: fixed; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+  .glow-1 { position: absolute; top: -10%; left: -10%; width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,92,255,0.25), transparent 70%); filter: blur(40px); }
+  .glow-2 { position: absolute; bottom: -10%; right: -10%; width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,211,238,0.2), transparent 70%); filter: blur(40px); }
+
+  .grad-text { background: linear-gradient(135deg,#a78bfa,#22d3ee); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+  header.nav { position: sticky; top: 0; z-index: 50; background: rgba(10,10,18,0.82); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { cursor: pointer; font-weight: 800; font-size: 18px; background: none; border: none; }
+  .nav-links { display: none; gap: 24px; }
+  .nav-links button { background: none; border: none; color: rgba(255,255,255,0.55); font-weight: 600; font-size: 14px; cursor: pointer; }
+  .nav-links button.active { color: #fff; }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .track-btn { display: none; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #fff;
+    border-radius: 10px; padding: 8px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .order-btn-nav { display: none; }
+  .hamburger { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+  .mobile-menu { border-top: 1px solid rgba(255,255,255,0.08); padding: 12px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .mobile-menu button { background: none; border: none; color: rgba(255,255,255,0.8); font-weight: 600; font-size: 15px; text-align: left; padding: 6px 0; cursor: pointer; }
+
+  @media (min-width: 768px) {
+    .nav-links { display: flex !important; }
+    .track-btn { display: inline-block !important; }
+    .order-btn-nav { display: inline-flex !important; }
+    .hamburger { display: none !important; }
+  }
+
+  .section { max-width: 1100px; margin: 0 auto; padding: 60px 20px; position: relative; z-index: 1; }
+
+  .btn-primary { background: linear-gradient(135deg, #7c5cff, #22d3ee); color: #0a0a12; font-weight: 700;
+    padding: 12px 24px; border-radius: 14px; border: none; cursor: pointer; font-size: 14px; display: inline-block; text-align: center; }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+  .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; font-weight: 600; padding: 12px 24px;
+    border-radius: 14px; border: 1px solid rgba(255,255,255,0.15); cursor: pointer; font-size: 14px; display: inline-block; text-align: center; }
+  .btn-block { width: 100%; }
+
+  .card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; backdrop-filter: blur(10px); }
+  .card-pad { padding: 24px; }
+
+  .badge { padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; display: inline-block; }
+  .badge-default { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: #fbbf24; }
+  .badge-green { background: rgba(16,185,129,0.15); color: #34d399; }
+  .badge-purple { background: rgba(139,92,246,0.18); color: #c4b5fd; }
+
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .field input, .field textarea {
+    width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px;
+    padding: 10px 14px; color: #fff; font-size: 14px; }
+  .field textarea { min-height: 90px; resize: vertical; }
+
+  .hero { text-align: center; padding-top: 80px; }
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 1px; color: #22d3ee; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.1; margin: 0; }
+  .hero p { max-width: 560px; margin: 24px auto; color: rgba(255,255,255,0.55); font-size: 16px; line-height: 1.6; }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .grid-auto-lg { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+
+  .service-pick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .service-pick { text-align: left; padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03); cursor: pointer; color: #fff; }
+  .service-pick.active { border: 1px solid #7c5cff; background: rgba(124,92,255,0.12); }
+  .service-pick .name { font-weight: 700; font-size: 13px; }
+  .service-pick .price { font-size: 12px; font-weight: 700; margin-top: 6px; }
+
+  .thumb { height: 160px; background: linear-gradient(135deg, rgba(124,92,255,0.35), rgba(34,211,238,0.25));
+    display: flex; align-items: center; justify-content: center; font-size: 34px; }
+
+  .filter-pill { padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05); color: #fff; font-weight: 600; font-size: 13px; cursor: pointer; }
+  .filter-pill.active { background: linear-gradient(135deg,#7c5cff,#22d3ee); color: #0a0a12; }
+
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; }
+  .price-row + .price-row { border-top: 1px solid rgba(255,255,255,0.08); }
+
+  .error-box { background: rgba(239,68,68,0.12); color: #fca5a5; padding: 10px 14px; border-radius: 10px; font-size: 13px; margin-bottom: 16px; }
+  .success-box { background: rgba(16,185,129,0.12); color: #6ee7b7; padding: 12px 14px; border-radius: 10px; font-size: 13px; }
+
+  .timeline { display: flex; margin-top: 16px; gap: 4px; }
+  .timeline-seg { flex: 1; height: 4px; border-radius: 4px; background: rgba(255,255,255,0.1); }
+  .timeline-seg.done { background: linear-gradient(135deg,#7c5cff,#22d3ee); }
+
+  footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 32px 20px; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .footer-links button { background: none; border: none; color: rgba(255,255,255,0.5); font-size: 13px; cursor: pointer; }
+  .footer-note { text-align: center; color: rgba(255,255,255,0.3); font-size: 12px; margin-top: 20px; }
+
+  .fab-whatsapp { position: fixed; bottom: 20px; right: 20px; z-index: 60; width: 54px; height: 54px; border-radius: 50%;
+    background: #25D366; display: flex; align-items: center; justify-content: center; font-size: 26px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+
+  ol.steps { color: rgba(255,255,255,0.6); font-size: 13px; line-height: 1.8; padding-left: 18px; margin: 0; }
+  ol.steps b { color: #fff; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+<script>
+"use strict";
+
+/* ---------- data ---------- */
+const WHATSAPP_NUMBER = "919618065279";
+const PHONEPE_NUMBER = "9618065279";
+
+const SERVICES = {
+  reel: { label: "Instagram Reels Editing", price: 20, desc: "Fast-paced cuts, trending transitions, captions — ready to post." },
+  video: { label: "Video Editing (up to 5 min)", price: 50, desc: "Clean cuts, color, music, and pacing for everyday videos." },
+  gaming: { label: "Gaming Edits", price: null, desc: "Killcams, highlights, hype montages. Price depends on length & effects." },
+  cinematic: { label: "Cinematic Edits", price: null, desc: "Color grading, cinematic pacing, sound design. Price depends on scope." },
+};
+
+const PORTFOLIO = [
+  { id: 1, cat: "Reels", title: "Travel Reel Montage", desc: "Fast cuts synced to a trending audio." },
+  { id: 2, cat: "Gaming", title: "Valorant Ace Highlight", desc: "Slow-mo killcam with hype sound design." },
+  { id: 3, cat: "Cinematic", title: "Short Film Trailer Cut", desc: "Color-graded, moody pacing." },
+  { id: 4, cat: "Videos", title: "Birthday Vlog Edit", desc: "Clean cuts with background music." },
+  { id: 5, cat: "Reels", title: "Product Promo Reel", desc: "Punchy captions, quick transitions." },
+  { id: 6, cat: "Gaming", title: "BGMI Chicken Dinner Recap", desc: "Highlight reel with zoom effects." },
+];
+
+const STATUS_STEPS = ["Order Received", "Payment Verification", "Payment Confirmed", "Editing in Progress", "Editing Completed", "Delivered"];
+
+/* ---------- helpers ---------- */
+function inr(n) { return n === null ? "Contact for price" : "₹" + n; }
+function waLink(message) { return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message); }
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+  });
+}
+function loadOrders() {
+  try {
+    const raw = localStorage.getItem("dhanush_edits_orders");
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) { return []; }
+}
+function saveOrders(orders) {
+  try { localStorage.setItem("dhanush_edits_orders", JSON.stringify(orders)); }
+  catch (e) { console.error("storage error", e); }
+}
+
+/* ---------- state ---------- */
+const state = {
+  view: "home",
+  menuOpen: false,
+  orders: loadOrders(),
+  activeOrderId: null,
+  portfolioFilter: "All",
+  orderForm: { name: "", email: "", whatsapp: "", service: "reel", duration: "", requirements: "", style: "", reference: "", instructions: "" },
+  orderError: "",
+};
+
+/* ---------- actions (exposed globally for inline onclick handlers) ---------- */
+function go(view) {
+  state.view = view;
+  state.menuOpen = false;
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function toggleMenu() { state.menuOpen = !state.menuOpen; render(); }
+function setPortfolioFilter(cat) { state.portfolioFilter = cat; render(); }
+function selectService(key) { state.orderForm.service = key; render(); }
+function updateOrderField(key, value) { state.orderForm[key] = value; }
+
+function submitOrderForm(e) {
+  e.preventDefault();
+  const f = state.orderForm;
+  if (!f.name || !f.email || !f.whatsapp || !f.requirements) {
+    state.orderError = "Please fill in your name, email, WhatsApp number, and editing requirements.";
+    render();
+    return;
+  }
+  state.orderError = "";
+  const nextNum = state.orders.length + 1;
+  const code = "DE-2026-" + String(nextNum).padStart(4, "0");
+  const service = SERVICES[f.service];
+  const order = {
+    id: code, name: f.name, email: f.email, whatsapp: f.whatsapp, service: f.service,
+    duration: f.duration, requirements: f.requirements, style: f.style, reference: f.reference, instructions: f.instructions,
+    price: service.price, priceLabel: inr(service.price),
+    status: "Order Received", paymentStatus: "Payment Pending", transactionId: "",
+    createdAt: new Date().toISOString(),
+  };
+  state.orders.push(order);
+  saveOrders(state.orders);
+  state.activeOrderId = code;
+  state.orderForm = { name: "", email: "", whatsapp: "", service: "reel", duration: "", requirements: "", style: "", reference: "", instructions: "" };
+  go("payment");
+}
+
+function submitPayment(orderId) {
+  const input = document.getElementById("txnInput");
+  const txn = input ? input.value.trim() : "";
+  if (!txn) return;
+  const order = state.orders.find(function (o) { return o.id === orderId; });
+  if (order) {
+    order.transactionId = txn;
+    order.paymentStatus = "Payment Submitted / Awaiting Verification";
+    order.status = "Payment Verification";
+    saveOrders(state.orders);
+  }
+  render();
+}
+
+/* ---------- render: shared pieces ---------- */
+function renderGlow() {
+  return '<div class="glow-bg"><div class="glow-1"></div><div class="glow-2"></div></div>';
+}
+
+function renderNav() {
+  const links = [["home", "Home"], ["services", "Services"], ["portfolio", "Portfolio"], ["pricing", "Pricing"], ["contact", "Contact"]];
+  const navBtns = links.map(function (l) {
+    return '<button class="' + (state.view === l[0] ? "active" : "") + '" onclick="go(\'' + l[0] + '\')">' + l[1] + "</button>";
+  }).join("");
+  const mobileBtns = links.concat([["order", "Order Your Edit"], ["track", "My Orders"]]).map(function (l) {
+    return '<button onclick="go(\'' + l[0] + '\')">' + l[1] + "</button>";
+  }).join("");
+  return (
+    '<header class="nav"><div class="nav-inner">' +
+      '<button class="logo grad-text" onclick="go(\'home\')">Dhanush Edits</button>' +
+      '<nav class="nav-links">' + navBtns + "</nav>" +
+      '<div class="nav-actions">' +
+        '<button class="track-btn" onclick="go(\'track\')">My Orders</button>' +
+        '<button class="btn-primary order-btn-nav" style="padding:8px 16px;font-size:13px;" onclick="go(\'order\')">Order Your Edit</button>' +
+        '<button class="hamburger" onclick="toggleMenu()">☰</button>' +
+      "</div>" +
+    "</div>" +
+    (state.menuOpen ? '<div class="mobile-menu">' + mobileBtns + "</div>" : "") +
+    "</header>"
+  );
+}
+
+function renderFooter() {
+  const links = [["services", "Services"], ["portfolio", "Portfolio"], ["pricing", "Pricing"], ["contact", "Contact"]]
+    .map(function (l) { return '<button onclick="go(\'' + l[0] + '\')">' + l[1] + "</button>"; }).join("");
+  return (
+    '<footer><div class="footer-inner">' +
+      '<div class="grad-text" style="font-weight:800;">Dhanush Edits</div>' +
+      '<div class="footer-links">' + links + "</div>" +
+    "</div>" +
+    '<div class="footer-note">Demo preview — this version stores orders only in your browser and doesn\'t send real emails.</div>' +
+    "</footer>"
+  );
+}
+
+function renderFab() {
+  return '<a class="fab-whatsapp" href="' + waLink("Hi Dhanush Edits!") + '" target="_blank" rel="noreferrer">💬</a>';
+}
+
+/* ---------- render: pages ---------- */
+function renderHome() {
+  const cards = Object.keys(SERVICES).map(function (key) {
+    const s = SERVICES[key];
+    return (
+      '<div class="card card-pad">' +
+        '<div style="font-weight:700;font-size:16px;">' + esc(s.label) + "</div>" +
+        '<div style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:8px;line-height:1.5;">' + esc(s.desc) + "</div>" +
+        '<div class="grad-text" style="margin-top:14px;font-weight:800;font-size:20px;">' + inr(s.price) + "</div>" +
+      "</div>"
+    );
+  }).join("");
+  return (
+    '<div class="section hero">' +
+      '<div class="eyebrow">PROFESSIONAL VIDEO EDITING</div>' +
+      "<h1>Your Videos.<br><span class=\"grad-text\">Our Creativity.</span></h1>" +
+      "<p>Affordable, professional video editing for Reels, everyday videos, gaming content, and cinematic edits — delivered straight to your WhatsApp.</p>" +
+      '<div class="hero-ctas">' +
+        '<button class="btn-primary" onclick="go(\'order\')">Order Your Edit</button>' +
+        '<button class="btn-secondary" onclick="go(\'portfolio\')">View My Work</button>' +
+      "</div>" +
+    "</div>" +
+    '<div class="section"><div class="grid-auto">' + cards + "</div></div>" +
+    '<div class="section" style="text-align:center;">' +
+      '<div class="card card-pad" style="padding:40px 24px;">' +
+        '<h2 style="font-size:26px;font-weight:800;margin:0;">Ready to get your video edited?</h2>' +
+        '<p style="color:rgba(255,255,255,0.5);margin-top:10px;">Simple pricing, fast turnaround, delivered on WhatsApp.</p>' +
+        '<button class="btn-primary" style="margin-top:20px;" onclick="go(\'order\')">Order Your Edit</button>' +
+      "</div>" +
+    "</div>"
+  );
+}
+
+function renderServices() {
+  const cards = Object.keys(SERVICES).map(function (key) {
+    const s = SERVICES[key];
+    return (
+      '<div class="card card-pad">' +
+        '<div style="font-weight:700;font-size:18px;">' + esc(s.label) + "</div>" +
+        '<div style="color:rgba(255,255,255,0.5);font-size:14px;margin-top:10px;line-height:1.6;">' + esc(s.desc) + "</div>" +
+        '<div class="grad-text" style="margin-top:16px;font-weight:800;font-size:22px;">' + inr(s.price) + "</div>" +
+        '<button class="btn-primary btn-block" style="margin-top:18px;" onclick="go(\'order\')">Order This</button>' +
+      "</div>"
+    );
+  }).join("");
+  return (
+    '<div class="section">' +
+      '<h1 style="font-size:34px;font-weight:800;">Editing Services</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);margin-top:8px;max-width:500px;">Pick the service that fits your video — pricing shown upfront.</p>' +
+      '<div class="grid-auto-lg" style="margin-top:32px;">' + cards + "</div>" +
+    "</div>"
+  );
+}
+
+function renderPortfolio() {
+  const cats = ["All", "Reels", "Gaming", "Cinematic", "Videos"];
+  const pills = cats.map(function (c) {
+    return '<button class="filter-pill ' + (state.portfolioFilter === c ? "active" : "") + '" onclick="setPortfolioFilter(\'' + c + '\')">' + c + "</button>";
+  }).join("");
+  const shown = state.portfolioFilter === "All" ? PORTFOLIO : PORTFOLIO.filter(function (p) { return p.cat === state.portfolioFilter; });
+  const cards = shown.map(function (p) {
+    return (
+      '<div class="card" style="overflow:hidden;">' +
+        '<div class="thumb">🎬</div>' +
+        '<div style="padding:18px;">' +
+          '<span class="badge badge-purple">' + esc(p.cat) + "</span>" +
+          '<div style="font-weight:700;margin-top:10px;">' + esc(p.title) + "</div>" +
+          '<div style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:4px;">' + esc(p.desc) + "</div>" +
+        "</div>" +
+      "</div>"
+    );
+  }).join("");
+  return (
+    '<div class="section">' +
+      '<h1 style="font-size:34px;font-weight:800;">My Work</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);margin-top:8px;max-width:520px;">These are placeholder examples — swap them for your real edited videos.</p>' +
+      '<div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;">' + pills + "</div>" +
+      '<div class="grid-auto-lg" style="margin-top:24px;">' + cards + "</div>" +
+    "</div>"
+  );
+}
+
+function renderPricing() {
+  const rows = Object.keys(SERVICES).map(function (key) {
+    const s = SERVICES[key];
+    return (
+      '<div class="price-row">' +
+        "<div>" +
+          '<div style="font-weight:700;">' + esc(s.label) + "</div>" +
+          '<div style="color:rgba(255,255,255,0.45);font-size:13px;margin-top:2px;">' + esc(s.desc) + "</div>" +
+        "</div>" +
+        '<div class="grad-text" style="font-weight:800;font-size:18px;">' + inr(s.price) + "</div>" +
+      "</div>"
+    );
+  }).join("");
+  return (
+    '<div class="section">' +
+      '<h1 style="font-size:34px;font-weight:800;text-align:center;">Simple, Honest Pricing</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);text-align:center;margin-top:8px;">No hidden fees. Pay via PhonePe after your order is placed.</p>' +
+      '<div class="card" style="margin-top:32px;overflow:hidden;">' + rows + "</div>" +
+      '<div class="card card-pad" style="margin-top:20px;font-size:14px;color:rgba(255,255,255,0.6);">' +
+        '<b style="color:#fff;">How payment works:</b> pay via PhonePe to <b style="color:#fff;">' + PHONEPE_NUMBER + "</b> and enter your transaction ID — payments are verified manually before editing starts." +
+      "</div>" +
+      '<div style="text-align:center;margin-top:28px;"><button class="btn-primary" onclick="go(\'order\')">Order Your Edit</button></div>' +
+    "</div>"
+  );
+}
+
+function renderOrder() {
+  const f = state.orderForm;
+  const serviceButtons = Object.keys(SERVICES).map(function (key) {
+    const s = SERVICES[key];
+    return (
+      '<button type="button" class="service-pick ' + (f.service === key ? "active" : "") + '" onclick="selectService(\'' + key + '\')">' +
+        '<div class="name">' + esc(s.label) + "</div>" +
+        '<div class="price grad-text">' + inr(s.price) + "</div>" +
+      "</button>"
+    );
+  }).join("");
+  const service = SERVICES[f.service];
+  return (
+    '<div class="section" style="max-width:640px;">' +
+      '<h1 style="font-size:32px;font-weight:800;text-align:center;">Order Your Edit</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);text-align:center;margin-top:8px;">Fill in your details below. You\'ll send your raw footage over WhatsApp after placing this order.</p>' +
+      '<form onsubmit="submitOrderForm(event)" style="margin-top:28px;">' +
+        '<div class="card card-pad" style="margin-bottom:16px;">' +
+          '<h3 style="margin-top:0;font-size:15px;font-weight:700;">Your details</h3>' +
+          '<div class="field"><label>Full name</label><input value="' + esc(f.name) + '" oninput="updateOrderField(\'name\', this.value)" /></div>' +
+          '<div class="field"><label>Email</label><input type="email" value="' + esc(f.email) + '" oninput="updateOrderField(\'email\', this.value)" /></div>' +
+          '<div class="field"><label>WhatsApp number</label><input value="' + esc(f.whatsapp) + '" oninput="updateOrderField(\'whatsapp\', this.value)" placeholder="e.g. 9876543210" /></div>' +
+        "</div>" +
+        '<div class="card card-pad" style="margin-bottom:16px;">' +
+          '<h3 style="margin-top:0;font-size:15px;font-weight:700;">Editing service</h3>' +
+          '<div class="service-pick-grid">' + serviceButtons + "</div>" +
+          '<div class="field"><label>Video duration (approx.)</label><input value="' + esc(f.duration) + '" oninput="updateOrderField(\'duration\', this.value)" placeholder="e.g. 30 seconds, 3 minutes" /></div>' +
+          '<div class="field"><label>Preferred style</label><input value="' + esc(f.style) + '" oninput="updateOrderField(\'style\', this.value)" placeholder="e.g. fast-paced, cinematic, minimal" /></div>' +
+          '<div class="field"><label>Editing requirements</label><textarea oninput="updateOrderField(\'requirements\', this.value)" placeholder="Describe what you want — cuts, music, captions, effects…">' + esc(f.requirements) + "</textarea></div>" +
+          '<div class="field"><label>Reference video/link (optional)</label><input value="' + esc(f.reference) + '" oninput="updateOrderField(\'reference\', this.value)" /></div>' +
+          '<div class="field"><label>Special instructions (optional)</label><textarea style="min-height:60px;" oninput="updateOrderField(\'instructions\', this.value)">' + esc(f.instructions) + "</textarea></div>" +
+        "</div>" +
+        '<div class="card card-pad" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">' +
+          "<div>" +
+            '<div style="font-size:12px;color:rgba(255,255,255,0.5);">Price for ' + esc(service.label) + "</div>" +
+            '<div class="grad-text" style="font-size:24px;font-weight:800;">' + inr(service.price) + "</div>" +
+          "</div>" +
+          (service.price === null ? '<div style="font-size:11px;color:rgba(255,255,255,0.4);max-width:160px;text-align:right;">We\'ll confirm the exact price on WhatsApp.</div>' : "") +
+        "</div>" +
+        (state.orderError ? '<div class="error-box">' + esc(state.orderError) + "</div>" : "") +
+        '<button type="submit" class="btn-primary btn-block">Continue to Payment</button>' +
+      "</form>" +
+    "</div>"
+  );
+}
+
+function renderPayment() {
+  const order = state.orders.find(function (o) { return o.id === state.activeOrderId; });
+  if (!order) {
+    return '<div class="section" style="text-align:center;"><p style="color:rgba(255,255,255,0.5);">No active order. <button class="btn-primary" onclick="go(\'order\')" style="margin-left:8px;">Place an order</button></p></div>';
+  }
+  const submitted = order.paymentStatus !== "Payment Pending";
+  return (
+    '<div class="section" style="max-width:520px;">' +
+      '<div style="text-align:center;margin-bottom:24px;">' +
+        '<div style="font-size:13px;color:rgba(255,255,255,0.5);">Order ID</div>' +
+        '<div class="grad-text" style="font-size:24px;font-weight:800;font-family:monospace;">' + esc(order.id) + "</div>" +
+      "</div>" +
+      '<div class="card card-pad" style="text-align:center;margin-bottom:16px;">' +
+        '<div style="font-size:13px;color:rgba(255,255,255,0.5);">Amount to pay</div>' +
+        '<div class="grad-text" style="font-size:32px;font-weight:800;margin-top:4px;">' + esc(order.priceLabel) + "</div>" +
+      "</div>" +
+      '<div class="card card-pad" style="margin-bottom:16px;">' +
+        '<h3 style="margin-top:0;font-size:15px;font-weight:700;">Pay with PhonePe</h3>' +
+        '<ol class="steps">' +
+          "<li>Open PhonePe and pay <b>" + (order.priceLabel === "Contact for price" ? "the confirmed amount" : esc(order.priceLabel)) + "</b> to <b>" + PHONEPE_NUMBER + "</b>.</li>" +
+          "<li>Add your Order ID (<b>" + esc(order.id) + "</b>) as the note if possible.</li>" +
+          "<li>Copy the transaction/reference ID PhonePe shows after payment.</li>" +
+          "<li>Paste it below and submit — payment is verified manually.</li>" +
+        "</ol>" +
+      "</div>" +
+      '<div class="card card-pad">' +
+        '<h3 style="margin-top:0;font-size:15px;font-weight:700;">Submit your payment reference</h3>' +
+        (submitted
+          ? '<div class="success-box">Payment reference submitted — status: <b>Awaiting Verification</b>. This isn\'t a confirmed payment yet; it\'s verified manually.</div>'
+          : (
+              '<div class="field"><label>Transaction / reference ID</label><input id="txnInput" placeholder="e.g. T2408211234567890" /></div>' +
+              '<button class="btn-primary btn-block" onclick="submitPayment(\'' + order.id + '\')">Submit Payment Reference</button>'
+            )
+        ) +
+      "</div>" +
+      '<div style="text-align:center;margin-top:20px;"><button onclick="go(\'track\')" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:13px;cursor:pointer;">View my order status →</button></div>' +
+    "</div>"
+  );
+}
+
+function renderTrack() {
+  if (state.orders.length === 0) {
+    return (
+      '<div class="section">' +
+        '<h1 style="font-size:32px;font-weight:800;">My Orders</h1>' +
+        '<p style="color:rgba(255,255,255,0.5);margin-top:8px;">Orders you\'ve placed in this browser.</p>' +
+        '<div class="card card-pad" style="text-align:center;margin-top:24px;padding:40px;">' +
+          '<p style="color:rgba(255,255,255,0.5);">No orders yet.</p>' +
+          '<button class="btn-primary" style="margin-top:16px;" onclick="go(\'order\')">Place your first order</button>' +
+        "</div>" +
+      "</div>"
+    );
+  }
+  const items = state.orders.slice().reverse().map(function (o) {
+    const idx = STATUS_STEPS.indexOf(o.status);
+    const segs = STATUS_STEPS.map(function (s, i) {
+      return '<div class="timeline-seg ' + (i <= idx ? "done" : "") + '" title="' + esc(s) + '"></div>';
+    }).join("");
+    return (
+      '<div class="card card-pad">' +
+        '<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+          "<div>" +
+            '<div style="font-family:monospace;font-size:13px;color:rgba(255,255,255,0.5);">' + esc(o.id) + "</div>" +
+            '<div style="font-weight:700;margin-top:2px;">' + esc(SERVICES[o.service] ? SERVICES[o.service].label : "") + "</div>" +
+          "</div>" +
+          '<div class="grad-text" style="font-weight:800;">' + esc(o.priceLabel) + "</div>" +
+        "</div>" +
+        '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">' +
+          '<span class="badge ' + (o.paymentStatus.indexOf("Awaiting") > -1 ? "badge-amber" : "badge-default") + '">' + esc(o.paymentStatus) + "</span>" +
+          '<span class="badge badge-purple">' + esc(o.status) + "</span>" +
+        "</div>" +
+        '<div class="timeline">' + segs + "</div>" +
+      "</div>"
+    );
+  }).join('<div style="height:12px;"></div>');
+  return (
+    '<div class="section">' +
+      '<h1 style="font-size:32px;font-weight:800;">My Orders</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);margin-top:8px;">Orders you\'ve placed in this browser.</p>' +
+      '<div style="margin-top:24px;">' + items + "</div>" +
+    "</div>"
+  );
+}
+
+function renderContact() {
+  return (
+    '<div class="section" style="max-width:480px;text-align:center;">' +
+      '<h1 style="font-size:32px;font-weight:800;">Get in Touch</h1>' +
+      '<p style="color:rgba(255,255,255,0.5);margin-top:8px;">The fastest way to reach out is WhatsApp.</p>' +
+      '<div class="card card-pad" style="margin-top:24px;text-align:left;">' +
+        '<div style="margin-bottom:16px;"><div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;">WhatsApp</div><div style="font-weight:700;margin-top:4px;">+91 96180 65279</div></div>' +
+        '<div><div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;">PhonePe payments</div><div style="font-weight:700;margin-top:4px;">' + PHONEPE_NUMBER + "</div></div>" +
+      "</div>" +
+      '<a href="' + waLink("Hi Dhanush Edits! I\'d like to ask about an edit.") + '" target="_blank" rel="noreferrer"><button class="btn-primary btn-block" style="margin-top:24px;">Chat on WhatsApp</button></a>' +
+    "</div>"
+  );
+}
+
+/* ---------- main render ---------- */
+function currentView() {
+  switch (state.view) {
+    case "home": return renderHome();
+    case "services": return renderServices();
+    case "portfolio": return renderPortfolio();
+    case "pricing": return renderPricing();
+    case "order": return renderOrder();
+    case "payment": return renderPayment();
+    case "track": return renderTrack();
+    case "contact": return renderContact();
+    default: return renderHome();
+  }
+}
+
+function render() {
+  const root = document.getElementById("root");
+  root.innerHTML =
+    renderGlow() +
+    renderNav() +
+    '<main style="position:relative;z-index:1;">' + currentView() + "</main>" +
+    renderFooter() +
+    renderFab();
+}
+
+render();
+</script>
+</body>
+</html>
